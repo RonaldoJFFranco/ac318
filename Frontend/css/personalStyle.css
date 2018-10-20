@@ -1,0 +1,18 @@
+figure{
+   width:430px; /*container-width*/
+   overflow:hidden; /*hide bounds of image */
+   margin:-100px 0 0 0;   /*reset margin of figure tag*/
+}
+figure img{
+   display:block; /*remove inline-block spaces*/
+   width:100%; /*make image streatch*/
+}
+
+#loginForm{
+  margin: -50px 0 0 0;
+}
+
+#homeLogo{
+  height: 250px;
+  margin: 0 12%;
+}
