@@ -8,6 +8,14 @@ figure img{
    width:100%; /*make image streatch*/
 }
 
+.navbar-brand img{
+  height:90px !important;
+}
+
+.navbar-collapse .collapse-brand img {
+    height: 90px;
+}
+
 #loginForm{
   margin: -50px 0 0 0;
 }
