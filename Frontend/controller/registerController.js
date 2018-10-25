@@ -1,6 +1,6 @@
 (function() {
   angular.module('registerFitgame',[])
-  .controller('registerCtrl',[function(){
+  .controller('registerCtrl',[function($http,ApiCall){
     var vm = this;
     vm.nome='';
     vm.email='';
@@ -16,7 +16,9 @@
         'email':vm.email,
         'senha':vm.senha
       }];
-      console.log(vm.model);
+      var result=ApiCall.CadastroCall(vm.model).success(function(data){
+        var data = $.parseJSON(JSON.parse(data));
+      });
     };
   }]);
 })();
