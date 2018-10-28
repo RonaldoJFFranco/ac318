@@ -121,7 +121,7 @@
                         <span class="input-group-text"><i class="ni ni-chart-bar-32"></i></span>
                       </div>
                       <select multiple class="form-control" ng-model="ctrl.selecionada" required >
-                        <option ng-repeat="x in ctrl.atividades" value="{{x.id}}" data-toggle="tooltip" data-placement="left" title="Dificuldade: {{x.dificuldade}} Descrição: {{x.descricao}}">{{x.nome}}</option>
+                        <option ng-repeat="x in ctrl.atividades" value="{{x.id}}" data-toggle="tooltip" data-placement="left" title="Dificuldade: {{x.dificuldade}} &#10;&#13; Descrição: {{x.descricao}}">{{x.nome}}</option>
                       </select>
                     </div>
                   </div>
@@ -130,7 +130,7 @@
                       <button type="button" id="adicionarAtividade" ng-click="ctrl.adicionar()" class="btn btn-icon btn-secondary center" data-toggle="tooltip" data-placement="left" title="Adicione uma atividade a sala">
   	                     <span class="btn-inner--icon"><i class="ni ni-fat-add"></i></span>
                       </button>
-                      <button type="button" id="removerAtividade" ng-click="ctrl.remover()"class="btn btn-icon btn-secondary center" data-toggle="tooltip" data-placement="right" title="remova uma atividade a sala">
+                      <button type="button" id="removerAtividade" ng-click="ctrl.remover()"class="btn btn-icon btn-secondary center" data-toggle="tooltip" data-placement="right" title="Remova uma atividade da sala">
   	                     <span class="btn-inner--icon"><i class="ni ni-fat-delete"></i></span>
                       </button>
                     </div>

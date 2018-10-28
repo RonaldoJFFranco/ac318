@@ -20,6 +20,14 @@ figure img{
   margin-left: -10%;
 }
 
+.section-profile-cover {
+    height: 680px;
+}
+
+.profilePic{
+  margin-bottom: 100px;
+}
+
 #adicionarAtividade,#removerAtividade{
   transform: translateX(-50%) !important;
 }
@@ -30,4 +38,10 @@ figure img{
 #homeLogo{
   height: 250px;
   margin: 0 12%;
+}
+
+@media (min-width: 992px){
+  .mt--300 {
+      margin-top: -600px !important;
+  }
 }
