@@ -1,0 +1,167 @@
+<!DOCTYPE html>
+<html ng-app="createRoomFitgame">
+
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+  <meta name="description" content="Start your development with a Design System for Bootstrap 4.">
+  <meta name="author" content="Creative Tim">
+  <title>Fitgame</title>
+  <!-- Favicon -->
+  <link href="./imagens/fitgameTittle.png" rel="icon" type="image/png">
+  <!-- Fonts -->
+  <link href="https://fonts.googleapis.com/css?family=Open+Sans:300,400,600,700" rel="stylesheet">
+  <!-- Icons -->
+  <link href="assets/vendor/nucleo/css/nucleo.css" rel="stylesheet">
+  <link href="assets/vendor/font-awesome/css/font-awesome.min.css" rel="stylesheet">
+  <!-- Argon CSS -->
+  <link type="text/css" href="assets/css/argon.css?v=1.0.1" rel="stylesheet">
+  <!-- Docs CSS -->
+  <link type="text/css" href="./css/personalStyle.css" rel="stylesheet">
+  <!-- Scrips js -->
+  <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.6.9/angular.min.js"></script>
+  <script src="controller/createRoomController.js"></script>
+</head>
+
+<body ng-controller="createRoomCtrl as ctrl">
+  <header class="header-global">
+    <nav id="navbar-main" class="navbar navbar-main navbar-expand-lg navbar-transparent navbar-light headroom">
+      <div class="container">
+        <a class="navbar-brand mr-lg-5 logo-nav" href="index.html">
+          <img src="./imagens/fitgamelogo.png">
+        </a>
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbar_global" aria-controls="navbar_global" aria-expanded="false" aria-label="Toggle navigation">
+          <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="navbar-collapse collapse" id="navbar_global">
+          <div class="navbar-collapse-header">
+            <div class="row">
+              <div class="col-6 collapse-brand">
+                <a href="index.html">
+                  <img src="./imagens/fitgamelogo.png">
+                </a>
+              </div>
+              <div class="col-6 collapse-close">
+                <button type="button" class="navbar-toggler" data-toggle="collapse" data-target="#navbar_global" aria-controls="navbar_global" aria-expanded="false" aria-label="Toggle navigation">
+                  <span></span>
+                  <span></span>
+                  <span></span>
+                </button>
+              </div>
+            </div>
+          </div>
+          <ul class="navbar-nav align-items-lg-center ml-lg-auto">
+            <li class="nav-item">
+              <a class="nav-link nav-link-icon" href="https://www.facebook.com/creativetim" target="_blank" data-toggle="tooltip" title="Like us on Facebook">
+                <i class="fa fa-facebook-square"></i>
+                <span class="nav-link-inner--text d-lg-none">Facebook</span>
+              </a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link nav-link-icon" href="https://www.instagram.com/creativetimofficial" target="_blank" data-toggle="tooltip" title="Follow us on Instagram">
+                <i class="fa fa-instagram"></i>
+                <span class="nav-link-inner--text d-lg-none">Instagram</span>
+              </a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link nav-link-icon" href="https://twitter.com/creativetim" target="_blank" data-toggle="tooltip" title="Follow us on Twitter">
+                <i class="fa fa-twitter-square"></i>
+                <span class="nav-link-inner--text d-lg-none">Twitter</span>
+              </a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link nav-link-icon" href="https://github.com/creativetimofficial/argon-design-system" target="_blank" data-toggle="tooltip" title="Star us on Github">
+                <i class="fa fa-github"></i>
+                <span class="nav-link-inner--text d-lg-none">Github</span>
+              </a>
+            </li>
+            <li class="nav-item d-none d-lg-block ml-lg-4">
+              <a href="index.html" class="btn btn-neutral btn-icon">
+                <span class="nav-link-inner--text">Entrar</span>
+              </a>
+            </li>
+          </ul>
+        </div>
+      </div>
+    </nav>
+  </header>
+  <main>
+    <section class="section section-shaped section-lg">
+      <div class="shape shape-style-1 bg-gradient-default">
+        <span></span>
+        <span></span>
+        <span></span>
+        <span></span>
+        <span></span>
+        <span></span>
+        <span></span>
+        <span></span>
+      </div>
+      <div class="container pt-lg-md">
+        <div class="row justify-content-center">
+          <div class="col-lg-8">
+            <div class="card bg-secondary shadow border-0">
+              <div class="card-body px-lg-5 py-lg-5">
+                <div class="text-muted mb-4">
+                  <h1>Criar Sala</h1>
+                  <small>Preencha os campos</small>
+                </div>
+                <form role="form" ng-submit="ctrl.submit()">
+                  <div class="form-group">
+                    <div class="input-group input-group-alternative mb-3">
+                      <div class="input-group-prepend">
+                        <span class="input-group-text"><i class="ni ni-hat-3"></i></span>
+                      </div>
+                      <input class="form-control" placeholder="Nome" ng-model="ctrl.nome" type="text" required>
+                    </div>
+                  </div>
+                  <div class="form-group">
+                    <div class="input-group input-group-alternative">
+                      <div class="input-group-prepend">
+                        <span class="input-group-text"><i class="ni ni-chart-bar-32"></i></span>
+                      </div>
+                      <select multiple class="form-control" ng-model="ctrl.selecionada" required >
+                        <option ng-repeat="x in ctrl.atividades" value="{{x.id}}" data-toggle="tooltip" data-placement="left" title="Dificuldade: {{x.dificuldade}} Descrição: {{x.descricao}}">{{x.nome}}</option>
+                      </select>
+                    </div>
+                  </div>
+                  <div class="form-group">
+                    <div class="buttonsActivity">
+                      <button type="button" id="adicionarAtividade" ng-click="ctrl.adicionar()" class="btn btn-icon btn-secondary center" data-toggle="tooltip" data-placement="left" title="Adicione uma atividade a sala">
+  	                     <span class="btn-inner--icon"><i class="ni ni-fat-add"></i></span>
+                      </button>
+                      <button type="button" id="removerAtividade" ng-click="ctrl.remover()"class="btn btn-icon btn-secondary center" data-toggle="tooltip" data-placement="right" title="remova uma atividade a sala">
+  	                     <span class="btn-inner--icon"><i class="ni ni-fat-delete"></i></span>
+                      </button>
+                    </div>
+                  </div>
+                  <div class="form-group">
+                    <div class="input-group input-group-alternative">
+                      <div class="input-group-prepend">
+                        <span class="input-group-text"><i class="ni ni-chart-bar-32"></i></span>
+                      </div>
+                      <select multiple class="form-control" ng-model="ctrl.retirar" >
+                        <option ng-repeat="y in ctrl.atividadesDaSala" value="{{y.id}}">{{y.nome}}</option>
+                      </select>
+                    </div>
+                  </div>
+                  <div class="text-center">
+                    <button type="submit" class="btn btn-primary mt-4">Enviar</button>
+                  </div>
+                </form>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+  </main>
+  <!-- Core -->
+  <script src="assets/vendor/jquery/jquery.min.js"></script>
+  <script src="assets/vendor/popper/popper.min.js"></script>
+  <script src="assets/vendor/bootstrap/bootstrap.min.js"></script>
+  <script src="assets/vendor/headroom/headroom.min.js"></script>
+  <!-- Argon JS -->
+  <script src="assets/js/argon.js?v=1.0.1"></script>
+</body>
+</html>
