@@ -1,13 +1,27 @@
 (function() {
-  angular.module('homeFitgameService',[])
-  .service('ApiCall',['$http',function($http){
-    this.CadastroCall = function (obj){
-      result = $http.post('localhost/mudarAQUIriboliaaaaaaaaaaaaaaaaaaaaa',obj).success(function(data,status){
-        result = (data);
-      }).error(function(){
-        alert('Deu Ruim');
-      });
-      return result;
-    };
-  }]);
+  angular.module('homeFitgameService')
+  .service('ApiCall',ApiCall);
+  ApiCall.$inject = ['$http'];
+  
+  function ApiCall ($http){
+    this.createUser(obj)
+    {
+      return = $http.post('localhost/mudarAQUIriboliaaaaaaaaaaaaaaaaaaaaa',obj);
+    }
+    
+    this.login(obj)
+    {
+      return = $http.post('localhost/mudarAQUIriboliaaaaaaaaaaaaaaaaaaaaa',obj);
+    }
+    
+    this.createRoom(obj)
+    {
+      return = $http.post('localhost/mudarAQUIriboliaaaaaaaaaaaaaaaaaaaaa',obj);
+    }
+    
+    this.createActivity(obj)
+    {
+      return = $http.post('localhost/mudarAQUIriboliaaaaaaaaaaaaaaaaaaaaa',obj);
+    }
+  }
 })();
