@@ -1,6 +1,7 @@
 (function() {
-  angular.module("homeFitgame",['$http'])
+  angular.module("homeFitgame")
   .service("ApiCall",ApiCall);
+  homeCtrl.$inject['$http'];
   function ApiCall ($http){
     this.login()
     {
