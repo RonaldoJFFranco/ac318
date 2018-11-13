@@ -1,6 +1,9 @@
 (function() {
-  angular.module('homeFitgame',[])
-  .controller('homeCtrl',[function(){
+  angular.module("homeFitgame")
+  .controller("homeCtrl",homeCtrl);
+  homeCtrl.$inject['ApiCall'];
+
+  function homeCtrl(ApiCall){
     var vm = this;
     vm.email='';
     vm.senha='';
@@ -13,7 +16,7 @@
         'email':vm.email,
         'senha':vm.senha
       }];
-      console.log(vm.model);
+      console.log("asd");
     };
-  }]);
+  };
 })();
