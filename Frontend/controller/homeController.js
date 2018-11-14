@@ -1,9 +1,8 @@
 (function() {
-  angular.module("homeFitgame")
+  angular.module("homeFitgame",[])
   .controller("homeCtrl",homeCtrl);
-  homeCtrl.$inject['ApiCall'];
 
-  function homeCtrl(ApiCall){
+  function homeCtrl(){
     var vm = this;
     vm.email='';
     vm.senha='';
