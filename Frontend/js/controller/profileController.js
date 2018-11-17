@@ -2,16 +2,16 @@
 angular.module('Fitgame')
 .controller('profileCtrl',profileCtrl)
 
-profileCtrl.$inject = ["ApiCall"]
+profileCtrl.$inject = ["ApiCall",]
 
 function profileCtrl(ApiCall){
   var vm = this;
-  vm.nome='';
-  vm.email='';
-  // Apicall.getAllRooms()
+  vm.nome= window.localStorage.getItem('email');///teste
+  vm.email= window.localStorage.getItem('email');
+  // Apicall.getRooms(window.localStorage.getItem('id'))
   // .then((resp) => {
   //   if(resp && resp.status == 200){
-  //     vm.sala = resp.data.body;
+  //     vm.sala = JASON.parse(resp.data.body);
   //   }
   // })
   // .catch(() => {
@@ -27,10 +27,10 @@ function profileCtrl(ApiCall){
     }
   ];
 
-  // Apicall.getAllActivitys()
+  // Apicall.getActivitys(window.localStorage.getItem('id'))
   // .then((resp) => {
   //   if(resp && resp.status == 200){
-  //     vm.atividadesCriadas = resp.data.body;
+  //     vm.atividadesCriadas = JASON.parse(resp.data.body);
   //   }
   // })
   // .catch(() => {

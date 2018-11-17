@@ -1,9 +1,9 @@
-angular.module('Fitgame')
-.controller('registerCtrl',registerCtrl)
+angular.module("Fitgame")
+.controller("registerCtrl",registerCtrl)
 
-registerCtrl.$inject = ["$http","ApiCall"];
+registerCtrl.$inject = ['ApiCall'];
 
-function registerCtrl($http,ApiCall){
+function registerCtrl(ApiCall){
   var vm = this;
   vm.nome='';
   vm.email='';
@@ -16,12 +16,9 @@ function registerCtrl($http,ApiCall){
   vm.submit=function(){
     vm.model=[{
       'nome':vm.nome,
-      'email':vm.email,
+      'usuario':vm.email,
       'senha':vm.senha
     }];
-    var result=ApiCall.CadastroCall(vm.model).success(function(data){
-      var data = $.parseJSON(JSON.parse(data));
-    });
+    ApiCall.registerAccount(vm.model);
   };
 };
-
