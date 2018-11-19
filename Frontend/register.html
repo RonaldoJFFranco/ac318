@@ -13,6 +13,7 @@
   <!-- Icons -->
   <link href="assets/vendor/nucleo/css/nucleo.css" rel="stylesheet">
   <link href="assets/vendor/font-awesome/css/font-awesome.min.css" rel="stylesheet">
+  <link href="assets/vendor/open-iconic-master/font/css/open-iconic.css" rel="stylesheet">
   <!-- Argon CSS -->
   <link type="text/css" href="assets/css/argon.css?v=1.0.1" rel="stylesheet">
   <!-- Docs CSS -->
@@ -73,9 +74,14 @@
                 <span class="nav-link-inner--text d-lg-none">Github</span>
               </a>
             </li>
-            <li class="nav-item d-none d-lg-block ml-lg-4">
+            <li ng-if="ctrl.aux == 0" class="nav-item d-none d-lg-block ml-lg-4">
               <a href="index.html" class="btn btn-neutral btn-icon">
                 <span class="nav-link-inner--text">Entrar</span>
+              </a>
+            </li>
+            <li ng-if="ctrl.aux > 0" class="nav-item">
+              <a href="index.html" class="nav-link nav-link-icon">
+                <span class="nav-link-inner--text" ng-click="ctrl.logout()">Sair</span>
               </a>
             </li>
           </ul>
@@ -101,7 +107,8 @@
             <div class="card bg-secondary shadow border-0">
               <div class="card-body px-lg-5 py-lg-5">
                 <div class="text-center text-muted mb-4">
-                  <h1>Crie Sua Conta</h1>
+                  <h1 ng-if="ctrl.aux > 0">Edite Sua Conta</h1>
+                  <h1 ng-if="ctrl.aux == 0">Crie Sua Conta</h1>
                   <small>Preencha os campos</small>
                 </div>
                 <form role="form" ng-submit="ctrl.submit()">
@@ -130,7 +137,12 @@
                     </div>
                   </div>
                   <div class="text-center">
-                    <button type="submit" class="btn btn-primary mt-4">Enviar</button>
+                    <button type="submit" class="form-group btn btn-primary mt-4">Enviar</button>
+                  </div>
+                  <div ng-if="ctrl.aux > 0" class="mt-4 text-center" style="cursor:pointer;margin-top:40px;">
+                    <span class="nav-link nav-link-icon" onclick="disabled" ng-click="ctrl.delete()">
+                      <span class="oi" data-glyph="trash" aria-hidden="true">Excluir conta</span>
+                    </span>
                   </div>
                 </form>
               </div>

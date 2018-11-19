@@ -74,9 +74,9 @@
                 <span class="nav-link-inner--text d-lg-none">Github</span>
               </a>
             </li>
-            <li class="nav-item d-none d-lg-block ml-lg-4">
-              <a href="index.html" class="btn btn-neutral btn-icon">
-                <span class="nav-link-inner--text">Sair</span>
+            <li class="nav-item">
+              <a href="index.html" class="nav-link nav-link-icon">
+                <span class="nav-link-inner--text" ng-click="ctrl.logout()">Sair</span>
               </a>
             </li>
           </ul>
@@ -122,6 +122,12 @@
               </h3>
               <div class="h6 font-weight-300"><i class="ni location_pin mr-2"></i>Tokyo, Japão</div>
               <div class="h6 mt-4"><i class="ni business_briefcase-24 mr-2"></i>Caratêca - Street Fighter</div>
+              <div class="h6 mt-4"><i class="ni business_briefcase-24 mr-2"></i>E-mail: {{ctrl.usuario}}</div>
+              <div class="h6 mt-4"><i class="ni business_briefcase-24 mr-2"></i>
+                <a class="nav-link nav-link-icon" href="register.html">
+                  <span class="oi" data-glyph="pencil" aria-hidden="true">Alterar dados</span>
+                </a>
+              </div>
             </div>
             <div class="mt-5 py-5 border-top text-center">
                <div class="row justify-content-center">

@@ -5,21 +5,32 @@ ApiCall.$inject = ['$http'];
 
 function ApiCall ($http){
 
-  this.login = (dataLogin) =>
-  {
-    return $http.post(`http://localhost:8080/route`,JSON.stringify(dataLogin));
-  }
-  this.createRoom = (dataRoom) =>
-  {
-    return $http.post(`http://localhost:8080/route`,JSON.stringify(dataRoom));
-  }
+  //crud user
   this.registerAccount = (dataNewUser) =>
   {
-    return $http.post("http://localhost:8080/avaliadores",JSON.stringify(dataNewUser));
+    return $http.post("http://localhost:8080/avaliadores",dataNewUser);
+  }
+  this.getAllUser = () =>
+  {
+    return $http.get("http://localhost:8080/avaliadores");
+  }
+  this.editAccount = (dataEditUser) =>
+  {
+    return $http.put("http://localhost:8080/avaliadores/"+window.sessionStorage.getItem('id'),dataEditUser);
+  }
+  this.deleteAccount = (idUser) =>
+  {
+    return $http.delete("http://localhost:8080/avaliadores/"+idUser);
+  }
+
+
+  this.createRoom = (dataRoom) =>
+  {
+    return $http.post("http://localhost:8080/salas",dataRoom);
   }
   this.createActivity = (dataNewActivity) =>
   {
-    return $http.post(`http://localhost:8080/route`,JSON.stringify(dataNewActivity));
+    return $http.post("http://localhost:8080/atividades",dataNewActivity);
   }
   this.getRooms = (userId) =>
   {
@@ -31,6 +42,6 @@ function ApiCall ($http){
   }
   this.getAllActivitys = () =>
   {
-    return $http.get(`http://localhost:8080/route`);
+    return $http.get("http://localhost:8080/atividades");
   }
 }

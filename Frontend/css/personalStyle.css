@@ -44,4 +44,8 @@ figure img{
   .mt--300 {
       margin-top: -600px !important;
   }
+  
+  .pb-lg-5, .py-lg-5 {
+    padding-bottom: 1rem !important;
+  }
 }

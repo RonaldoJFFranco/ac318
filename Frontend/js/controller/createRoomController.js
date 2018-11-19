@@ -2,19 +2,25 @@
 angular.module('Fitgame')
 .controller('createRoomCtrl',createRoomCtrl)
 
-createRoomCtrl.$inject = [];
+createRoomCtrl.$inject = ['ApiCall'];
 
-function createRoomCtrl(){
+function createRoomCtrl(ApiCall){
   var vm = this;
   vm.nome='';
   vm.atividadesDaSala=[];
   vm.selecionada='';
   vm.retirar='';
-  vm.atividades=[
-    {id:1, nome : "Atividade1", dificuldade: "Baixa", descricao:"10 agachamentos, 10 flexões"},
-    {id:2, nome : "Atividade2", dificuldade: "Normal", descricao:"20 agachamentos, 20 flexões"},
-    {id:3, nome : "Atividade3", dificuldade: "Alta", descricao:"30 agachamentos, 30 flexões"}
-  ];
+  vm.atividades=[];
+
+  ApiCall.getAllActivitys()
+  .then((resp) => {
+    console.log(resp.data);
+    vm.atividades=resp.data;
+  })
+  .catch(() => {
+    return console.log("error", "Não foi possível fazer o login");
+  });
+
   vm.adicionar=function(){
     var found ='';
     found = vm.atividadesDaSala.find(function(item){return item.id == vm.selecionada});
@@ -29,7 +35,6 @@ function createRoomCtrl(){
     }
   };
   vm.remover=function(){
-
     var found = vm.atividadesDaSala.find(function(item){return item.id == vm.retirar});
     console.log(vm.atividadesDaSala.indexOf(found));
     console.log(vm.retirar);
@@ -41,6 +46,12 @@ function createRoomCtrl(){
       "atividades":vm.atividadesDaSala
     }
     console.log(vm.aux);
+    ApiCall.createRoom(vm.aux)
+    .then((resp) => {
+      return console.log("deu");
+    })
+    .catch(() => {
+      return console.log("error", "Não foi possível realizar o cadastro");
+    });
   };
 }
-

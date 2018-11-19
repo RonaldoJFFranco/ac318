@@ -5,31 +5,40 @@ homeCtrl.$inject = ['ApiCall','$window'];
 
 function homeCtrl(ApiCall,$window){
   var vm = this;
-  vm.email='';
+  vm.usuario='';
   vm.senha='';
-  vm.user='';
-  vm.login=[{
-    'email':vm.email,
+
+  vm.login={
+    'usuario':vm.usuario,
     'senha':vm.senha
-  }];
+  };
   vm.submit=function(){
-    vm.login=[{
-      'email':vm.email,
+    vm.login={
+      'usuario':vm.usuario,
       'senha':vm.senha
-    }];
-    window.localStorage.setItem('usuario', vm.email);
-    window.localStorage.setItem('email', vm.email);
-    $window.location.href="profile.html";
-    // console.log(ApiCall.login(vm.login))
+    };
+    ApiCall.getAllUser()
+    .then((resp) => {
+      for (var i = 0; i < resp.data.length; i++) {
+        if(resp.data[i].usuario == vm.email && resp.data[i].senha == vm.senha){
+          window.sessionStorage.setItem('usuario', resp.data[i].usuario);
+          window.sessionStorage.setItem('nome', resp.data[i].nome);
+          window.sessionStorage.setItem('senha', resp.data[i].senha);
+          window.sessionStorage.setItem('id', resp.data[i].id);
+          window.sessionStorage.setItem('atividades', resp.data[i].atividades);
+          $window.location.href="profile.html";
+        }
+      }
+      if(sessionStorage.length==0){
+        alert("e-mail ou senha incorretos, verifique suas informações e tente novamente!");
+      }
+    })
+    .catch(() => {
+      alert("error", "Não foi possível fazer o login");
+    });
     // .then((resp) => {
-    //   if(resp && resp.status == 200){
-    //     vm.user = JASON.parse(resp.data.body);
-    //     window.localStorage.setItem('usuario', vm.user.usuario);
-    //     window.localStorage.setItem('nome', vm.user.nome);
-    //     window.localStorage.setItem('email', vm.user.email);
-    //     window.localStorage.setItem('id', vm.user.id);
-    //     $window.location.href="profile.html";
-    //   }
+    //
+    //
     // })
     // .catch(() => {
     //   return console.log("error", "Não foi possível fazer o login");
