@@ -2,9 +2,9 @@
 angular.module('Fitgame')
 .controller('registerCtrl',registerCtrl)
 
-registerCtrl.$inject=["ApiCall"];
+registerCtrl.$inject=['ApiCall','$window'];
 
-function registerCtrl(ApiCall){
+function registerCtrl(ApiCall,$window){
   var vm = this;
   vm.nome='';
   vm.dificuldade='';
@@ -28,5 +28,14 @@ function registerCtrl(ApiCall){
     .catch(() => {
       return console.log("error", "Não foi possível criar a atividade");
     });
+  };
+
+  vm.voltar = () => {
+    $window.location.href="profile.html";
+  };
+
+  vm.logout = () => {
+    sessionStorage.clear();
+    $window.location.href="index.html";
   };
 };

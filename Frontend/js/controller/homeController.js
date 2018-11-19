@@ -1,5 +1,5 @@
-angular.module("Fitgame")
-.controller("homeCtrl",homeCtrl);
+angular.module('Fitgame')
+.controller('homeCtrl',homeCtrl);
 
 homeCtrl.$inject = ['ApiCall','$window'];
 

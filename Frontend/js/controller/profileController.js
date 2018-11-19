@@ -2,7 +2,7 @@
 angular.module('Fitgame')
 .controller('profileCtrl',profileCtrl)
 
-profileCtrl.$inject = ["ApiCall","$window"]
+profileCtrl.$inject = ['ApiCall','$window']
 
 function profileCtrl(ApiCall,$window){
   if(window.sessionStorage.getItem('usuario'))
@@ -11,6 +11,7 @@ function profileCtrl(ApiCall,$window){
     vm.nome = window.sessionStorage.getItem('nome');///teste
     vm.usuario = window.sessionStorage.getItem('usuario');
     vm.atividadesCriadas = window.sessionStorage.getItem('atividades');
+    vm.sala = window.sessionStorage.getItem('sala');
     // Apicall.getRooms(window.localStorage.getItem('id'))
     // .then((resp) => {
     //   if(resp && resp.status == 200){
@@ -21,14 +22,14 @@ function profileCtrl(ApiCall,$window){
     //   return console.log("error", "Não foi possível carregar a lista de consultas disponíveis");
     // });
 
-    vm.sala=[
-      { nome:"sala1",
-        atividades:[
-                    {id:1, nome : "Atividade1", dificuldade: "Baixa", descricao:"10 agachamentos, 10 flexões"},
-                    {id:2, nome : "Atividade2", dificuldade: "Normal", descricao:"20 agachamentos, 20 flexões"}
-                    ]
-      }
-    ];
+    // vm.sala=[
+    //   { nome:"sala1",
+    //     atividades:[
+    //                 {id:1, nome : "Atividade1", dificuldade: "Baixa", descricao:"10 agachamentos, 10 flexões"},
+    //                 {id:2, nome : "Atividade2", dificuldade: "Normal", descricao:"20 agachamentos, 20 flexões"}
+    //                 ]
+    //   }
+    // ];
 
     // Apicall.getActivitys(window.localStorage.getItem('id'))
     // .then((resp) => {

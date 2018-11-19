@@ -1,5 +1,5 @@
-angular.module("Fitgame")
-.controller("registerCtrl",registerCtrl)
+angular.module('Fitgame')
+.controller('registerCtrl',registerCtrl)
 
 registerCtrl.$inject = ['ApiCall',"$window"];
 

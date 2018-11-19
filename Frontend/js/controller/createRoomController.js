@@ -2,9 +2,9 @@
 angular.module('Fitgame')
 .controller('createRoomCtrl',createRoomCtrl)
 
-createRoomCtrl.$inject = ['ApiCall'];
+createRoomCtrl.$inject = ['ApiCall','$window'];
 
-function createRoomCtrl(ApiCall){
+function createRoomCtrl(ApiCall,$window){
   var vm = this;
   vm.nome='';
   vm.atividadesDaSala=[];
@@ -54,4 +54,14 @@ function createRoomCtrl(ApiCall){
       return console.log("error", "Não foi possível realizar o cadastro");
     });
   };
+
+  vm.voltar = () => {
+    console.log("qwertS");
+    $window.location.href="profile.html";
+  }
+
+  vm.logout = () => {
+    sessionStorage.clear();
+    $window.location.href="index.html";
+  }
 }

@@ -111,7 +111,7 @@
               <div class="col-lg-5 order-lg-2 profilePic">
                 <div class="card-profile-image">
                   <a href="#">
-                    <img src="./imagens/ryu.jpg" class="rounded-circle">
+                    <img src="./imagens/perfil.png" class="rounded-circle">
                   </a>
                 </div>
               </div>
@@ -120,8 +120,8 @@
               <h3>{{ctrl.nome}}
                 <span class="font-weight-light">, 23</span>
               </h3>
-              <div class="h6 font-weight-300"><i class="ni location_pin mr-2"></i>Tokyo, Japão</div>
-              <div class="h6 mt-4"><i class="ni business_briefcase-24 mr-2"></i>Caratêca - Street Fighter</div>
+              <!-- <div class="h6 font-weight-300"><i class="ni location_pin mr-2"></i>Tokyo, Japão</div> -->
+              <!--<div class="h6 mt-4"><i class="ni business_briefcase-24 mr-2"></i>Profissão</div>-->
               <div class="h6 mt-4"><i class="ni business_briefcase-24 mr-2"></i>E-mail: {{ctrl.usuario}}</div>
               <div class="h6 mt-4"><i class="ni business_briefcase-24 mr-2"></i>
                 <a class="nav-link nav-link-icon" href="register.html">
@@ -133,7 +133,7 @@
                <div class="row justify-content-center">
                  <div class="row">
                    <div class="col">
-                     <h3>Salas Criadas</h3>
+                     <h3>Sala de jogo</h3>
                      <table class="table table-striped">
                        <thead>
                          <tr>
@@ -157,7 +157,7 @@
                          </tr>
                        </tbody>
                      </table>
-                     <a href="createRoom.html" class="btn btn-primary btn-icon">
+                     <a ng-if="!ctrl.sala" href="createRoom.html" class="btn btn-primary btn-icon">
                        <span class="nav-link-inner--text">Criar Sala</span>
                      </a>
                    </div>
