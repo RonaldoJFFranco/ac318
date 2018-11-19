@@ -1,19 +1,13 @@
 package com.ac328.fitgame.data;
 
 import java.io.Serializable;
-import java.util.HashSet;
-import java.util.Set;
 
-import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.EntityListeners;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
-import javax.persistence.JoinTable;
-import javax.persistence.JoinColumn;
-import javax.persistence.ManyToMany;
 import javax.persistence.Table;
 import javax.validation.constraints.NotBlank;
 
@@ -41,14 +35,6 @@ public class AvaliadorData implements Serializable{
 	@NotBlank
 	private String senha;
 	
-	@ManyToMany(cascade = { CascadeType.ALL })
-    @JoinTable(
-        name = "atividade_has_avaliador", 
-        joinColumns = { @JoinColumn(name = "avaliador_id") }, 
-        inverseJoinColumns = { @JoinColumn(name = "atividade_id") }
-    )
-    Set<AtividadeData> atividades = new HashSet<>();
-	
 	public Long getId() {
 		return id;
 	}
@@ -72,13 +58,6 @@ public class AvaliadorData implements Serializable{
 	}
 	public void setSenha(String senha) {
 		this.senha = senha;
-	}
-	
-	public Set<AtividadeData> getAtividades() {
-		return atividades;
-	}
-	public void setAtividades(Set<AtividadeData> atividades) {
-		this.atividades = atividades;
 	}
 	
 }

@@ -1,8 +1,8 @@
 package com.ac328.fitgame.data;
 
 import java.io.Serializable;
-import java.util.HashSet;
-import java.util.Set;
+import java.util.ArrayList;
+import java.util.List;
 
 import javax.persistence.CascadeType;
 import javax.persistence.Column;
@@ -40,13 +40,11 @@ public class SalaData implements Serializable{
 	@JoinColumn(name = "avaliador_id")
 	private AvaliadorData avaliador;
 	
-	@ManyToMany(cascade = { CascadeType.ALL })
-    @JoinTable(
-        name = "sala_has_atividade", 
-        joinColumns = { @JoinColumn(name = "sala_id") }, 
-        inverseJoinColumns = { @JoinColumn(name = "atividade_id") }
-    )
-    Set<AtividadeData> atividades = new HashSet<>();
+	@ManyToMany(cascade = CascadeType.ALL)
+    @JoinTable(name = "sala_has_atividade", 
+             joinColumns = { @JoinColumn(name = "sala_id") }, 
+             inverseJoinColumns = { @JoinColumn(name = "atividade_id") })
+    private List<AtividadeData> atividades = new ArrayList<AtividadeData>();
 	
 	public Long getId() {
 		return id;
@@ -72,12 +70,20 @@ public class SalaData implements Serializable{
 		this.avaliador = avaliador;
 	}
 
+	public List<AtividadeData> getAtividades() {
+		return atividades;
+	}
+
+	public void setAtividades(List<AtividadeData> atividades) {
+		this.atividades = atividades;
+	}
+
+	/*
 	public Set<AtividadeData> getAtividades() {
 		return atividades;
 	}
 
 	public void setAtividades(Set<AtividadeData> atividades) {
 		this.atividades = atividades;
-	}
-	
+	}*/
 }
