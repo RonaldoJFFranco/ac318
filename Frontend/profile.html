@@ -137,27 +137,27 @@
                      <table class="table table-striped">
                        <thead>
                          <tr>
-                           <th scope="col">Nome</th>
+                           <th scope="col">Pin</th>
                            <th scope="col">Atividades</th>
                            <th scope="col">Opções</th>
                          </tr>
                        </thead>
                        <tbody>
-                         <tr ng-repeat="x in ctrl.sala">
-                           <td>{{ x.nome }}</td>
+                         <tr ng-repeat="x in ctrl.sala track by $index">
+                           <td>{{ x.pin }}</td>
                            <td><span ng-repeat="y in x.atividades">{{ y.nome }}</br></span></td>
                            <td>
-                             <a class="nav-link nav-link-icon" href="addActivity.html" target="_blank" data-toggle="tooltip" title="Editar">
+                             <a class="nav-link nav-link-icon" href="createRoom.html?sl={{x.id}}" data-toggle="tooltip" title="Editar">
                                <span class="oi" data-glyph="pencil" aria-hidden="true"></span>
                              </a>
-                             <a class="nav-link nav-link-icon" target="_blank" data-toggle="tooltip" title="Excluir">
-                               <span class="oi" data-glyph="trash" aria-hidden="true"></span>
-                             </a>
+                             <span class="nav-link nav-link-icon" ng-click="ctrl.deleteSla(x.id)" data-toggle="tooltip" title="Excluir" style="cursor:pointer;">
+                                 <span class="oi" data-glyph="trash" aria-hidden="true"></span>
+                               </span>
                            </td>
                          </tr>
                        </tbody>
                      </table>
-                     <a ng-if="ctrl.sala.lenght!=0" href="createRoom.html" class="btn btn-primary btn-icon">
+                     <a ng-if="ctrl.sala.length==0" href="createRoom.html" class="btn btn-primary btn-icon">
                        <span class="nav-link-inner--text">Criar Sala</span>
                      </a>
                    </div>
@@ -173,17 +173,17 @@
                          </tr>
                        </thead>
                        <tbody>
-                         <tr ng-repeat="x in ctrl.atividadesCriadas">
-                           <td>{{ x.nome }}</td>
-                           <td>{{ x.dificuldade }}</td>
-                           <td>{{ x.descricao }}</td>
+                         <tr ng-repeat="k in ctrl.atividadesCriadas track by $index">
+                           <td>{{k.nome}}</td>
+                           <td>{{k.dificuldade}}</td>
+                           <td>{{k.descricao}}</td>
                            <td>
-                             <a class="nav-link nav-link-icon" href="addActivity.html" target="_blank" data-toggle="tooltip" title="Editar">
+                             <a class="nav-link nav-link-icon" href="addActivity.html?at={{k.id}}" data-toggle="tooltip" title="Editar">
                                <span class="oi" data-glyph="pencil" aria-hidden="true"></span>
                              </a>
-                             <a class="nav-link nav-link-icon" target="_blank" data-toggle="tooltip" title="Excluir">
+                             <span class="nav-link nav-link-icon" ng-click="ctrl.deleteAtv(k.id)" data-toggle="tooltip" title="Excluir" style="cursor:pointer;">
                                <span class="oi" data-glyph="trash" aria-hidden="true"></span>
-                             </a>
+                             </span>
                            </td>
                          </tr>
                        </tbody>

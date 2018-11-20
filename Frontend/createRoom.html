@@ -105,7 +105,8 @@
             <div class="card bg-secondary shadow border-0">
               <div class="card-body px-lg-5 py-lg-5">
                 <div class="text-muted mb-4">
-                  <h1>Criar Sala</h1>
+                  <h1 ng-if="ctrl.flag==false">Criar Sala</h1>
+                  <h1 ng-if="ctrl.flag==true">Editar Sala</h1>
                   <small>Preencha os campos</small>
                 </div>
                 <form role="form" ng-submit="ctrl.submit()">

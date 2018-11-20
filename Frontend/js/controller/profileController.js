@@ -22,7 +22,8 @@ function profileCtrl(ApiCall,$window){
     ApiCall.getRoom(vm.user)
     .then((resp) => {
         console.log(resp.data);
-        vm.sala =  resp.data;
+        vm.sala = resp.data;
+
     })
     .catch(() => {
       return console.log("error", "Não foi possível carregar a lista de consultas disponíveis");
@@ -42,10 +43,34 @@ function profileCtrl(ApiCall,$window){
     //   {id:3, nome : "Atividade3", dificuldade: "Alta", descricao:"30 agachamentos, 30 flexões"}
     // ];
 
+    vm.deleteSla = (id) => {
+      console.log(id);
+      ApiCall.deleteRoom(id)
+      .then((resp) => {
+        alert("Atividade excluída");
+        $window.location.reload();
+      })
+      .catch(() => {
+        alert("error", "Não foi possível realizar a exclusão");
+      });
+    };
+
+    vm.deleteAtv = (id) => {
+      console.log(id);
+      ApiCall.deleteActivity(id)
+      .then((resp) => {
+        alert("Atividade excluída");
+        $window.location.reload();
+      })
+      .catch(() => {
+        alert("error", "Não foi possível realizar a exclusão");
+      });
+    };
+
     vm.logout = () => {
       sessionStorage.clear();
       $window.location.href="index.html";
-    }
+    };
   }
   else
   {

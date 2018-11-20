@@ -2,15 +2,36 @@
 angular.module('Fitgame')
 .controller('createRoomCtrl',createRoomCtrl)
 
-createRoomCtrl.$inject = ['ApiCall','$window'];
+createRoomCtrl.$inject = ['ApiCall','$window','$location'];
 
-function createRoomCtrl(ApiCall,$window){
+function createRoomCtrl(ApiCall,$window,$location){
+
+  var sl = null;
+  new URL(location.href).searchParams.get('at')
+  const params = new URL(location.href).searchParams;
+  var sl = params.get('sl');
+
   var vm = this;
   vm.pin=Math.floor(Math.random() * 8999 + 1000);
   vm.atividadesDaSala=[];
   vm.selecionada='';
   vm.retirar='';
   vm.atividades=[];
+
+  if(sl){
+    console.log("qweqweqweqw");
+    ApiCall.getRoomById(sl)
+    .then((resp)=>{
+      console.log(resp.data[0].pin);
+      vm.pin = resp.data[0].pin;
+      vm.atividadesDaSala= resp.data[0].atividades;
+      //vm.atividades= resp.data[0].atividades;
+      vm.flag = true;
+    })
+    .catch(() => {
+      return console.log("error", "Não foi possível editar a atividade");
+    });
+  }
 
   ApiCall.getAllActivitys()
   .then((resp) => {
@@ -51,17 +72,32 @@ function createRoomCtrl(ApiCall,$window){
         "nome":window.sessionStorage.getItem('nome'),
         "usuario":window.sessionStorage.getItem('usuario')
       },
-      "atividades":JSON.parse(angular.toJson(vm.atividades))
+      "atividades":JSON.parse(angular.toJson(vm.atividadesDaSala))
     }
 
     console.log(vm.aux);
-    ApiCall.createRoom(vm.aux)
-    .then((resp) => {
-      return console.log("deu");
-    })
-    .catch(() => {
-      return console.log("error", "Não foi possível realizar o cadastro");
-    });
+    if(sl==null){
+      ApiCall.createRoom(vm.aux)
+      .then((resp) => {
+        alert("Sala criada com sucesso");
+        $window.location.href="profile.html";
+      })
+      .catch(() => {
+        alert("Não foi possivel criar a sala");
+        $window.location.href="profile.html";
+      });
+    }
+    else {
+      ApiCall.editRoom(vm.aux,sl)
+      .then((resp) => {
+        alert("Edição realizada com sucesso");
+        $window.location.href="profile.html";
+      })
+      .catch(() => {
+        alert("Não foi possivel editar a sala");
+        $window.location.href="profile.html";
+      });
+    }
   };
 
   vm.voltar = () => {
