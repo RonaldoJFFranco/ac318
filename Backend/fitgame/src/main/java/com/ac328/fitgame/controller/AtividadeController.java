@@ -13,6 +13,7 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.ac328.fitgame.data.AtividadeData;
+import com.ac328.fitgame.data.AvaliadorData;
 import com.ac328.fitgame.exception.AtividadeNotFoundException;
 import com.ac328.fitgame.repository.AtividadeRepository;
 
@@ -31,6 +32,11 @@ public class AtividadeController {
 	@PostMapping("/atividades")
 	AtividadeData newAtividade(@RequestBody AtividadeData newAtividade) {
 		return repository.save(newAtividade);
+	}
+	
+	@GetMapping("/atividades/filter")
+	List<AtividadeData> atividadePorAvaliador(@RequestBody AvaliadorData newAtividade) {
+		return repository.getAtividadeByAvaliador(newAtividade);
 	}
 
 	@GetMapping("/atividades/{id}")

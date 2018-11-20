@@ -40,11 +40,11 @@ public class SalaData implements Serializable{
 	@JoinColumn(name = "avaliador_id")
 	private AvaliadorData avaliador;
 	
-	@ManyToMany(cascade = CascadeType.ALL)
+	@ManyToMany
     @JoinTable(name = "sala_has_atividade", 
              joinColumns = { @JoinColumn(name = "sala_id") }, 
              inverseJoinColumns = { @JoinColumn(name = "atividade_id") })
-    private List<AtividadeData> atividades = new ArrayList<AtividadeData>();
+    private List<AtividadeData> atividades;
 	
 	public Long getId() {
 		return id;
