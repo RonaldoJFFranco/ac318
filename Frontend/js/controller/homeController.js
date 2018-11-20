@@ -19,13 +19,13 @@ function homeCtrl(ApiCall,$window){
     };
     ApiCall.getAllUser()
     .then((resp) => {
+      console.log(resp.data);
       for (var i = 0; i < resp.data.length; i++) {
         if(resp.data[i].usuario == vm.email && resp.data[i].senha == vm.senha){
           window.sessionStorage.setItem('usuario', resp.data[i].usuario);
           window.sessionStorage.setItem('nome', resp.data[i].nome);
           window.sessionStorage.setItem('senha', resp.data[i].senha);
           window.sessionStorage.setItem('id', resp.data[i].id);
-          window.sessionStorage.setItem('atividades', resp.data[i].atividades);
           $window.location.href="profile.html";
         }
       }

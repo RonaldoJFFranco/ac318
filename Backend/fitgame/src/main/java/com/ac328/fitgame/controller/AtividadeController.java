@@ -34,7 +34,7 @@ public class AtividadeController {
 		return repository.save(newAtividade);
 	}
 	
-	@GetMapping("/atividades/filter")
+	@PostMapping("/atividades/filter")
 	List<AtividadeData> atividadePorAvaliador(@RequestBody AvaliadorData newAtividade) {
 		return repository.getAtividadeByAvaliador(newAtividade);
 	}

@@ -32,13 +32,13 @@ function ApiCall ($http){
   {
     return $http.post("http://localhost:8080/atividades",dataNewActivity);
   }
-  this.getRooms = (userId) =>
+  this.getRoom = (user) =>
   {
-    return $http.get(`http://localhost:8080/route?`+userId);
+    return $http.get("http://localhost:8080/salas/filter");
   }
-  this.getActivitys = (userId) =>
+  this.getActivitys = (user) =>
   {
-    return $http.get(`http://localhost:8080/route?`+userId);
+    return $http.post("http://localhost:8080/atividades/filter",user);
   }
   this.getAllActivitys = () =>
   {

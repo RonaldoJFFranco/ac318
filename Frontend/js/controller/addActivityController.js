@@ -18,7 +18,13 @@ function registerCtrl(ApiCall,$window){
     vm.model={
       'nome':vm.nome,
       'dificuldade':vm.dificuldade,
-      'descricao':vm.describ
+      'descricao':vm.describ,
+      'avaliador':{
+        "id":window.sessionStorage.getItem('id'),
+        "senha":window.sessionStorage.getItem('senha'),
+        "nome":window.sessionStorage.getItem('nome'),
+        "usuario":window.sessionStorage.getItem('usuario')
+      }
     };
     console.log(vm.model);
     ApiCall.createActivity(vm.model)
