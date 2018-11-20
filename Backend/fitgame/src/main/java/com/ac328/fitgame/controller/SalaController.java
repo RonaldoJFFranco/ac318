@@ -12,6 +12,8 @@ import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RestController;
 
+import com.ac328.fitgame.data.AtividadeData;
+import com.ac328.fitgame.data.AvaliadorData;
 import com.ac328.fitgame.data.SalaData;
 import com.ac328.fitgame.exception.SalaNotFoundException;
 import com.ac328.fitgame.repository.SalaRepository;
@@ -32,7 +34,12 @@ public class SalaController {
 	SalaData newSala(@RequestBody SalaData newSala) {
 		return repository.save(newSala);
 	}
-
+	
+	@PostMapping("/salas/filter")
+	List<SalaData> getSalaPorAvaliador(@RequestBody AvaliadorData newSala) {
+		return repository.getSalaByAvaliador(newSala);
+	}
+	
 	@GetMapping("/salas/{id}")
 	SalaData one(@PathVariable Long id) {
 
